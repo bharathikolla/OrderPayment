@@ -8,7 +8,9 @@ import lombok.Setter;
 public class OrderRequest {
 	
 	 private Integer id;
+	 private String productName;
 	 private OrderType orderType;
 	 private String email;
 	 private String shippingAddress;
+	 private String productPrice;
 }

@@ -6,11 +6,8 @@ import com.example.SamplePayment.model.OrderRequest;
 
 @Service
 public class ProductProcessor implements PaymentProcessor {
-    private final PackingSlipService packingSlipService;
-
-    public PhysicalProductProcessor(PackingSlipService packingSlipService) {
-        this.packingSlipService = packingSlipService;
-    }
+    private  PackingSlipService packingSlipService;
+    private AgentCommissionService agentCommissionService;
 
     @Override
     public void process(OrderRequest orderRequest) {
@@ -19,5 +16,6 @@ public class ProductProcessor implements PaymentProcessor {
                 orderRequest.getEmail(),
                 orderRequest.getShippingAddress()
         );
+        agentCommissionService.generateCommission(orderRequest.getOrderId(), orderRequest.getProductName(),orderRequest.getProductPrice()); 
     }
 }

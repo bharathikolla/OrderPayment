@@ -1,13 +1,26 @@
 package com.example.SamplePayment.service;
 
-@service
-public class VideoProcessor {
-	@Override
+import org.springframework.stereotype.Service;
+
+import com.example.SamplePayment.model.OrderRequest;
+
+@Service
+public class VideoProcessor implements PaymentProcessor {
+    private final PackingSlipService packingSlipService;
+
+    public VideoProcessor(PackingSlipService packingSlipService) {
+        this.packingSlipService = packingSlipService;
+    }
+
+    @Override
     public void process(OrderRequest orderRequest) {
-        System.out.println("Processing video order.");
+        StringBuilder packingSlip = new StringBuilder("Packing Slip for Video: " + orderRequest.getProductName());
+
         if ("Learning to Ski".equalsIgnoreCase(orderRequest.getProductName())) {
-            System.out.println("Adding free 'First Aid' video to packing slip.");
+            packingSlip.append("\nBonus: Free 'First Aid' Video (Per 1997 court decision)");
         }
+
+        packingSlipService.generatePackingSlip(orderRequest.getOrderId(), packingSlip.toString());
     }
 
 }

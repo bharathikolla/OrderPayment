@@ -6,18 +6,17 @@ import com.example.SamplePayment.model.OrderRequest;
 
 @Service
 public class BookProcessor implements PaymentProcessor {
-    private final PackingSlipService packingSlipService;
-
-    public BookProcessor(PackingSlipService packingSlipService) {
-        this.packingSlipService = packingSlipService;
-    }
-
+	
+    private PackingSlipService packingSlipService;
+    private AgentCommissionService agentCommissionService;
+  
     @Override
     public void process(OrderRequest orderRequest) {
         packingSlipService.generatePackingSlipForBook(
                 orderRequest.getOrderId(),
                 orderRequest.getEmail(),
-                orderRequest.getShippingAddress()
-        );
+                orderRequest.getShippingAddress());
+        agentCommissionService.generateCommission(orderRequest.getOrderId(), orderRequest.getProductName(),orderRequest.getProductPrice()); 
+        
     }
 }

@@ -12,11 +12,13 @@ public class OrderProcessorFactory {
 	    public OrderProcessorFactory(ProductProcessor physicalProductProcessor,
 	                                 BookProcessor bookProcessor,
 	                                 MembershipProcessor membershipProcessor,
-	                                 MembershipUpgradeProcessor membershipUpgradeProcessor) {
+	                                 MembershipUpgradeProcessor membershipUpgradeProcessor,
+	                                 VideoProcessor videoProcessor) {
 	        processorMap.put("PHYSICAL_PRODUCT", physicalProductProcessor);
 	        processorMap.put("BOOK", bookProcessor);
 	        processorMap.put("MEMBERSHIP", membershipProcessor);
 	        processorMap.put("UPGRADE_MEMBERSHIP", membershipUpgradeProcessor);
+	        processorMap.put("VIDEO", videoProcessor);
 	    }
 
 	    public PaymentProcessor getProcessor(String orderType) {

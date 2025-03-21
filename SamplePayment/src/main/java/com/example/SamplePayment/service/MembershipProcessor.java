@@ -6,15 +6,15 @@ import com.example.SamplePayment.model.OrderRequest;
 
 @Service
 public class MembershipProcessor  implements PaymentProcessor {
-    private final MembershipService membershipService;
+	private final MembershipService membershipService;
 
-    public MembershipProcessor(MembershipService membershipService) {
-        this.membershipService = membershipService;
-    }
+	public MembershipProcessor(MembershipService membershipService) {
+		this.membershipService = membershipService;
+	}
 
-    @Override
-    public void process(OrderRequest orderRequest) {
-        membershipService.activateMembership(orderRequest.getEmail());
-    }
-	 
+	@Override
+	public void process(OrderRequest orderRequest) {
+		membershipService.activateMembership(orderRequest.getEmail());
+	}
+
 }

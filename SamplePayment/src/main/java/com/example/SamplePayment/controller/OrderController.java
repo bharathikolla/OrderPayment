@@ -11,22 +11,27 @@ import com.example.SamplePayment.service.PaymentProcessorFactory;
 
 @RestController
 @RequestMapping("/orders")
-public class OrderController {
+public class OrderController
+{
 	private final PaymentProcessorFactory processorFactory;
 
-    public OrderController(PaymentProcessorFactory processorFactory) {
-        this.processorFactory = processorFactory;
-    }
+	public OrderController(PaymentProcessorFactory processorFactory)
+	{
+		this.processorFactory = processorFactory;
+	}
 
-    @PostMapping("/process")
-    public String processOrder(@RequestBody OrderRequest orderRequest) {
-        PaymentProcessor processor = processorFactory.getProcessor(orderRequest.getOrderType());
-        if (processor != null) {
-            processor.process(orderRequest);
-            return "Order processed successfully.";
-        } else {
-            return "Invalid order type.";
-        }
-    }
-
+	@PostMapping("/process")
+	public String processOrder(@RequestBody OrderRequest orderRequest) 
+	{
+		PaymentProcessor processor = processorFactory.getProcessor(orderRequest.getOrderType());
+		if (processor != null)
+		{
+			processor.process(orderRequest);
+			return "Order processed successfully.";
+		} 
+		else 
+		{
+			return "Invalid order type.";
+		}
+	}
 }

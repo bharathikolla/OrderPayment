@@ -12,19 +12,18 @@ import lombok.Setter;
 @Setter
 public class PackingSlip {
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	private String orderId;
+	private String customerEmail;
+	private String shippingAddress;
 
-    private String orderId;
-    private String customerEmail;
-    private String shippingAddress;
+	public PackingSlip() {}
 
-    public PackingSlip() {}
-
-    public PackingSlip(String orderId, String customerEmail, String shippingAddress) {
-        this.orderId = orderId;
-        this.customerEmail = customerEmail;
-        this.shippingAddress = shippingAddress;
-    }
+	public PackingSlip(String orderId, String customerEmail, String shippingAddress) {
+		this.orderId = orderId;
+		this.customerEmail = customerEmail;
+		this.shippingAddress = shippingAddress;
+	}
 
 }

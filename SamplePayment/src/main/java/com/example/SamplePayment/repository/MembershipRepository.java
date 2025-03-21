@@ -8,6 +8,6 @@ import com.example.SamplePayment.model.Membership;
 
 public interface MembershipRepository  extends JpaRepository<Membership, Integer>
 {
-    Optional<Membership> findByCustomerEmail(String email);
+	Optional<Membership> findByCustomerEmail(String email);
 
 }

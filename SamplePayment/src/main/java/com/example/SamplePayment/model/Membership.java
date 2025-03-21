@@ -10,20 +10,23 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Membership {
+public class Membership 
+{
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private String  email;
-    private boolean isActive;
-    private boolean isUpgraded;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	private String  email;
+	private boolean isActive;
+	private boolean isUpgraded;
 
-    public Membership() {
-    }
+	public Membership()
+	{
 
-    public Membership(String email, boolean isActive,boolean isUpgraded) {
-        this.email = email;
-        this.isActive = isActive;
-        this.isUpgraded = isUpgraded;
-    }
+	}
+
+	public Membership(String email, boolean isActive,boolean isUpgraded) {
+		this.email = email;
+		this.isActive = isActive;
+		this.isUpgraded = isUpgraded;
+	}
 }

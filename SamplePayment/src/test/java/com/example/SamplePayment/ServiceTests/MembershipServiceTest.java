@@ -34,13 +34,13 @@ class MembershipServiceTest {
 
     @BeforeEach
     void setUp() {
-        membershipService = new MembershipService(membershipRepository);
+        membershipService = new MembershipService(membershipRepository, emailService);
     }
 
     @Test
     void testActivateMembership_WhenNotActive_ShouldActivateAndSendEmail() {
         // Arrange
-        Membership inactiveMembership = new Membership(customerEmail, false);
+        Membership inactiveMembership = new Membership(customerEmail, false,false);
         when(membershipRepository.findByCustomerEmail(customerEmail)).thenReturn(Optional.of(inactiveMembership));
 
         // Act
@@ -55,7 +55,7 @@ class MembershipServiceTest {
     @Test
     void testActivateMembership_WhenAlreadyActive_ShouldNotSendEmail() {
         // Arrange
-        Membership activeMembership = new Membership(customerEmail, true);
+        Membership activeMembership = new Membership(customerEmail, true,true);
         when(membershipRepository.findByCustomerEmail(customerEmail)).thenReturn(Optional.of(activeMembership));
 
         // Act
@@ -70,7 +70,7 @@ class MembershipServiceTest {
     @Test
     void testUpgradeMembership_WhenNotUpgraded_ShouldUpgradeAndSendEmail() {
         // Arrange
-        Membership membership = new Membership(customerEmail, false);
+        Membership membership = new Membership(customerEmail, false,false);
         when(membershipRepository.findByCustomerEmail(customerEmail)).thenReturn(Optional.of(membership));
 
         // Act
@@ -85,7 +85,7 @@ class MembershipServiceTest {
     @Test
     void testUpgradeMembership_WhenAlreadyUpgraded_ShouldNotSendEmail() {
         // Arrange
-        Membership upgradedMembership = new Membership(customerEmail, true);
+        Membership upgradedMembership = new Membership(customerEmail, true,true);
         when(membershipRepository.findByCustomerEmail(customerEmail)).thenReturn(Optional.of(upgradedMembership));
 
         // Act

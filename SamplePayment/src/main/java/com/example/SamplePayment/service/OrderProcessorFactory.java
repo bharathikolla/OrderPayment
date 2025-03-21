@@ -14,7 +14,7 @@ public class OrderProcessorFactory {
 	                                 MembershipProcessor membershipProcessor,
 	                                 MembershipUpgradeProcessor membershipUpgradeProcessor,
 	                                 VideoProcessor videoProcessor) {
-	        processorMap.put("PHYSICAL_PRODUCT", physicalProductProcessor);
+	        processorMap.put("PRODUCT", physicalProductProcessor);
 	        processorMap.put("BOOK", bookProcessor);
 	        processorMap.put("MEMBERSHIP", membershipProcessor);
 	        processorMap.put("UPGRADE_MEMBERSHIP", membershipUpgradeProcessor);

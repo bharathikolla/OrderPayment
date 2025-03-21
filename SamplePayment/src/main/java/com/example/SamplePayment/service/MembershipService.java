@@ -21,7 +21,7 @@ public class MembershipService
 
 	@Transactional
 	public void activateMembership(String email) {
-		Membership membership = membershipRepository.findByCustomerEmail(email)
+		Membership membership = membershipRepository.findByEmail(email)
 				.orElse(new Membership(email, false,false));
 
 		if (!membership.isActive()) {
@@ -36,7 +36,7 @@ public class MembershipService
 
 	@Transactional
 	public void upgradeMembership(String email) {
-		Membership membership = membershipRepository.findByCustomerEmail(email)
+		Membership membership = membershipRepository.findByEmail(email)
 				.orElseThrow(() -> new RuntimeException("Membership not found for email: " + email));
 
 		if (!membership.isUpgraded()) {

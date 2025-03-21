@@ -24,7 +24,7 @@ class PackingSlipServiceTest {
     @InjectMocks
     private PackingSlipService packingSlipService;
 
-    private final String orderId = "ORDER123";
+    private final Integer orderId = 123;
     private final String customerEmail = "customer@example.com";
     private final String shippingAddress = "123 Street, City, Country";
     private final String royaltyDepartmentEmail = "royalty@publisher.com";
@@ -62,13 +62,13 @@ class PackingSlipServiceTest {
         // First Packing Slip - Normal customer
         PackingSlip firstSlip = captor.getAllValues().get(0);
         assertEquals(orderId, firstSlip.getOrderId());
-        assertEquals(customerEmail, firstSlip.getEmail());
+        assertEquals(customerEmail, firstSlip.getCustomerEmail());
         assertEquals(shippingAddress, firstSlip.getShippingAddress());
 
         // Second Packing Slip - Royalty Department
         PackingSlip secondSlip = captor.getAllValues().get(1);
         assertEquals(orderId, secondSlip.getOrderId());
-        assertEquals(royaltyDepartmentEmail, secondSlip.getEmail());
+        assertEquals(royaltyDepartmentEmail, secondSlip.getCustomerEmail());
         assertEquals(royaltyDepartmentAddress, secondSlip.getShippingAddress());
     }
 }

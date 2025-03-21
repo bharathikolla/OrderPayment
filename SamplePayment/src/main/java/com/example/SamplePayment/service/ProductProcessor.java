@@ -12,10 +12,10 @@ public class ProductProcessor implements PaymentProcessor {
     @Override
     public void process(OrderRequest orderRequest) {
         packingSlipService.generatePackingSlip(
-                orderRequest.getOrderId(),
+                orderRequest.getId(),
                 orderRequest.getEmail(),
                 orderRequest.getShippingAddress()
         );
-        agentCommissionService.generateCommission(orderRequest.getOrderId(), orderRequest.getProductName(),orderRequest.getProductPrice()); 
+        agentCommissionService.generateCommission(orderRequest.getId(), orderRequest.getProductName(),orderRequest.getProductPrice()); 
     }
 }

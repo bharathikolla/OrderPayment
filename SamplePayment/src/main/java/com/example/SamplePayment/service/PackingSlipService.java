@@ -18,12 +18,12 @@ public class PackingSlipService
 	}
 
 	@Transactional
-	public void generatePackingSlip(String orderId, String customerEmail, String shippingAddress) {
+	public void generatePackingSlip(Integer orderId, String customerEmail, String shippingAddress) {
 		PackingSlip packingSlip = new PackingSlip(orderId, customerEmail, shippingAddress);
 		packingSlipRepository.save(packingSlip);
 	}
 	@Transactional
-	public void generatePackingSlipForBook(String orderId, String customerEmail, String shippingAddress) {
+	public void generatePackingSlipForBook(Integer orderId, String customerEmail, String shippingAddress) {
 		// Generate normal packing slip
 		generatePackingSlip(orderId, customerEmail, shippingAddress);
 

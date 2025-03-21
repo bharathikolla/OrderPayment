@@ -13,10 +13,10 @@ public class BookProcessor implements PaymentProcessor {
     @Override
     public void process(OrderRequest orderRequest) {
         packingSlipService.generatePackingSlipForBook(
-                orderRequest.getOrderId(),
+                orderRequest.getId(),
                 orderRequest.getEmail(),
                 orderRequest.getShippingAddress());
-        agentCommissionService.generateCommission(orderRequest.getOrderId(), orderRequest.getProductName(),orderRequest.getProductPrice()); 
+        agentCommissionService.generateCommission(orderRequest.getId(), orderRequest.getProductName(),orderRequest.getProductPrice()); 
         
     }
 }

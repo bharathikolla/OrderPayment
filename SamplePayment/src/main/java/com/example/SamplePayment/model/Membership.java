@@ -1,15 +1,12 @@
 package com.example.SamplePayment.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.Getter;
-import lombok.Setter;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
-@Getter
-@Setter
 public class Membership 
 {
 	@Id
@@ -29,4 +26,37 @@ public class Membership
 		this.isActive = isActive;
 		this.isUpgraded = isUpgraded;
 	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public boolean isActive() {
+		return isActive;
+	}
+
+	public void setActive(boolean isActive) {
+		this.isActive = isActive;
+	}
+
+	public boolean isUpgraded() {
+		return isUpgraded;
+	}
+
+	public void setUpgraded(boolean isUpgraded) {
+		this.isUpgraded = isUpgraded;
+	}
+	
 }

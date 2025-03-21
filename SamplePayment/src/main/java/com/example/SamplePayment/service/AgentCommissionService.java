@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class AgentCommissionService 
 {
-	public void generateCommission(String orderId, String productName, double amount) 
+	public void generateCommission(Integer orderId, String productName, double amount) 
 	{
 		double commissionPercentage = 0.10;
 		double commissionAmount = amount * commissionPercentage;

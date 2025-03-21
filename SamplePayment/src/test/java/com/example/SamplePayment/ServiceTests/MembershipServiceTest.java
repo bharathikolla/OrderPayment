@@ -41,7 +41,7 @@ class MembershipServiceTest {
     void testActivateMembership_WhenNotActive_ShouldActivateAndSendEmail() {
         // Arrange
         Membership inactiveMembership = new Membership(customerEmail, false,false);
-        when(membershipRepository.findByCustomerEmail(customerEmail)).thenReturn(Optional.of(inactiveMembership));
+        when(membershipRepository.findByEmail(customerEmail)).thenReturn(Optional.of(inactiveMembership));
 
         // Act
         membershipService.activateMembership(customerEmail);
@@ -56,7 +56,7 @@ class MembershipServiceTest {
     void testActivateMembership_WhenAlreadyActive_ShouldNotSendEmail() {
         // Arrange
         Membership activeMembership = new Membership(customerEmail, true,true);
-        when(membershipRepository.findByCustomerEmail(customerEmail)).thenReturn(Optional.of(activeMembership));
+        when(membershipRepository.findByEmail(customerEmail)).thenReturn(Optional.of(activeMembership));
 
         // Act
         membershipService.activateMembership(customerEmail);
@@ -71,7 +71,7 @@ class MembershipServiceTest {
     void testUpgradeMembership_WhenNotUpgraded_ShouldUpgradeAndSendEmail() {
         // Arrange
         Membership membership = new Membership(customerEmail, false,false);
-        when(membershipRepository.findByCustomerEmail(customerEmail)).thenReturn(Optional.of(membership));
+        when(membershipRepository.findByEmail(customerEmail)).thenReturn(Optional.of(membership));
 
         // Act
         membershipService.upgradeMembership(customerEmail);
@@ -86,7 +86,7 @@ class MembershipServiceTest {
     void testUpgradeMembership_WhenAlreadyUpgraded_ShouldNotSendEmail() {
         // Arrange
         Membership upgradedMembership = new Membership(customerEmail, true,true);
-        when(membershipRepository.findByCustomerEmail(customerEmail)).thenReturn(Optional.of(upgradedMembership));
+        when(membershipRepository.findByEmail(customerEmail)).thenReturn(Optional.of(upgradedMembership));
 
         // Act
         membershipService.upgradeMembership(customerEmail);
@@ -100,7 +100,7 @@ class MembershipServiceTest {
     @Test
     void testUpgradeMembership_WhenMembershipNotFound_ShouldThrowException() {
         // Arrange
-        when(membershipRepository.findByCustomerEmail(customerEmail)).thenReturn(Optional.empty());
+        when(membershipRepository.findByEmail(customerEmail)).thenReturn(Optional.empty());
 
         // Act & Assert
         RuntimeException exception = assertThrows(RuntimeException.class, () -> membershipService.upgradeMembership(customerEmail));
